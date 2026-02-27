@@ -19,7 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\game\Game.cpp" />
+    <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\player\Player.cpp" />
+    <ClCompile Include="src\TileMap\TileMap.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Internal\Game.h" />
+    <ClInclude Include="include\Internal\Input.h" />
+    <ClInclude Include="include\Internal\Player.h" />
+    <ClInclude Include="include\Internal\TileMap.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
