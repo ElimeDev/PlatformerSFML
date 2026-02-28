@@ -23,7 +23,6 @@
     <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\player\Player.cpp" />
-    <ClCompile Include="src\TileMap\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Internal\Game.h" />
