@@ -2,11 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
-using namespace sf;
-
 class Input
 {
-    struct Button { bool left, right, up, down; };
+    struct Button { bool left, right, jump; };
 
 public:
     // prototype du constructeur
@@ -14,7 +12,7 @@ public:
     //Proto Getbtn
     Button GetButton(void) const;
     //proto
-    void InputHandler(Event event, RenderWindow& window);
+    void InputHandler(sf::Event event, sf::RenderWindow& window);
 
 private:
     Button button;

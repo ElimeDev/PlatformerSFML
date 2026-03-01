@@ -1,9 +1,11 @@
 #include "Internal/Input.h"
 
+using namespace sf;
+
 //Constructeur
 Input::Input()
 {
-    button.left = button.right = button.up = button.down = false;
+    button.left = button.right = button.jump = false;
 }
 
 // Fonction qui accede à button (struc) et nous donne l'info private
@@ -32,11 +34,8 @@ void Input::InputHandler(Event event, RenderWindow& window)
         case Keyboard::Right:
             button.right = true;
             break;
-        case Keyboard::Down:
-            button.down = true;
-            break;
-        case Keyboard::Up:
-            button.up = true;
+        case Keyboard::Space:
+            button.jump = true;
             break;
         default:
             break;
@@ -53,11 +52,8 @@ void Input::InputHandler(Event event, RenderWindow& window)
         case Keyboard::Right:
             button.right = false;
             break;
-        case Keyboard::Down:
-            button.down = false;
-            break;
-        case Keyboard::Up:
-            button.up = false;
+        case Keyboard::Space:
+            button.jump = false;
             break;
         default:
             break;
