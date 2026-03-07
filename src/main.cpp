@@ -4,7 +4,7 @@
 
 int main()
 {
-	Game game(sf::Vector2f(500, 500), "PlatformerSFML");
+	Game game(sf::Vector2f(800, 600), "PlatformerSFML");
 	game.mainloop();
 	return 0;
 }
