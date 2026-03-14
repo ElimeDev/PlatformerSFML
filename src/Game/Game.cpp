@@ -25,9 +25,8 @@ void Game::mainloop()
 
         float deltaTime = m_clock.restart().asSeconds();
 
-		m_player.update(deltaTime, m_input);
+        m_player.update(deltaTime, m_input);
 
-		// handle collisions after movement
 		handleCollision();
 
         m_window.clear(Color::Black);
@@ -48,14 +47,13 @@ void Game::mainloop()
 
 void Game::handleCollision()
 {
-    for (auto& p : platforms)
-    {
-        auto oldPos = m_player.getPosition();
-        auto newPos = p.handleCollision(oldPos, m_player.getSize());
-        if (newPos != oldPos)
-        {
-            m_player.setPosition(newPos);
-            m_player.land();
-        }
+	for (auto& p : platforms)
+	{
+		auto oldPos = m_player.getPosition();
+		auto newPos = p.handleCollision(m_player);
+		if (newPos != oldPos)
+		{
+			m_player.setPosition(newPos);
+		}
 	}
 }

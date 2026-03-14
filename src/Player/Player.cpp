@@ -45,23 +45,28 @@ void Player::update(float delta, Input& input)
     m_velocity.y += GRAVITY * delta;
 
     // Integrate vertical velocity
-    m_position.y += m_velocity.y * delta;
+    m_position += m_velocity * delta;
 
     m_sprite.setPosition(m_position);
 }
 
-sf::Vector2f Player::getSize()
+sf::Vector2f Player::getSize() const
 {
 	return m_size;
 }
 
-sf::Vector2f Player::getPosition()
+sf::Vector2f Player::getPosition() const
 {
     // return top-left position for compatibility with platform collision handling
     return Vector2f(m_position.x - RADIUS, m_position.y - RADIUS);
 }
 
-void Player::setPosition(const sf::Vector2f &position)
+sf::FloatRect Player::getBounds() const
+{
+	return sf::FloatRect(m_position.x - RADIUS, m_position.y - RADIUS, m_size.x, m_size.y);
+}
+
+void Player::setPosition(const sf::Vector2f& position)
 {
     // position is expected to be top-left; convert to center
     m_position = Vector2f(position.x + RADIUS, position.y + RADIUS);

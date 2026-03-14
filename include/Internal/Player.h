@@ -10,16 +10,16 @@ public:
 	~Player();
 	void update(float delta, Input &input);
 
-	sf::Vector2f getSize();
-	sf::Vector2f getPosition();
+	// Accesseurs marqués const pour pouvoir être appelés sur des objets const
+	sf::Vector2f getSize() const;
+	sf::Vector2f getPosition() const;
+	sf::FloatRect getBounds() const;
 
 	void setPosition(const sf::Vector2f &position);
 
 	// gravity/physics
 	void land();
 	void leaveGround();
-
-private:
 
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

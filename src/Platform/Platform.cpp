@@ -14,13 +14,28 @@ Platform::~Platform()
 {
 }
 
-sf::Vector2f Platform::handleCollision(const sf::Vector2f& playerPosition, const sf::Vector2f& playerSize)
+sf::Vector2f Platform::handleCollision(Player& player)
 {
+	sf::Vector2f playerPosition = player.getPosition();
+	sf::Vector2f playerSize = player.getSize();
+
 	sf::FloatRect platformBounds = m_sprite.getGlobalBounds();
-	sf::FloatRect playerBounds(playerPosition, playerSize);
+	sf::FloatRect playerBounds = player.getBounds();
 	if (platformBounds.intersects(playerBounds))
 	{
-		// Simple collision response: move the player up to the top of the platform
+		// Check if player is coming from below (player bottom is below platform bottom)
+		float playerBottom = playerPosition.y + playerSize.y;
+		float platformBottom = platformBounds.top + platformBounds.height;
+
+		if (playerBottom > platformBottom)
+		{
+			// Player is coming from below, push down to prevent penetration
+			player.leaveGround();
+			return sf::Vector2f(playerPosition.x, platformBounds.top + platformBounds.height);
+		}
+
+		// Collision from above: move the player up to the top of the platform
+		player.land();
 		return sf::Vector2f(playerPosition.x, platformBounds.top - playerSize.y);
 	}
 	return playerPosition; // No collision, return original position
